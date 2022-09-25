@@ -4,7 +4,15 @@ import mongoose from 'mongoose';
 
 const Task = new mongoose.Schema({
 
-  titile: {
+
+  key: {
+    unique: true,
+    type: Number,
+
+
+  },
+
+  title: {
     type: String,
     required: true,
   },
