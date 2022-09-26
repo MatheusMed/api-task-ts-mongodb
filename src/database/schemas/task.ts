@@ -1,17 +1,7 @@
 import mongoose from 'mongoose';
 
 
-
 const Task = new mongoose.Schema({
-
-
-  key: {
-    unique: true,
-    type: Number,
-
-
-  },
-
   title: {
     type: String,
     required: true,
@@ -30,5 +20,9 @@ const Task = new mongoose.Schema({
   }
 
 });
+
+Task.statics.deleteById = function (_id) {
+  return this.deleteOne({ _id: _id });
+};
 
 export default mongoose.model('Task', Task);

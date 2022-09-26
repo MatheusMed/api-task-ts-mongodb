@@ -13,11 +13,11 @@ class TaskController {
 
   async deleteTask(request: Request, response: Response) {
 
-    const id = new Task()._id;
+    const id = request.params.id;
 
-    const deleteTask = await Task.deleteOne({ id });
+    return Task.remove({ _id: id }).exec().then(result => response.status(200).json(result));
 
-    return response.json(deleteTask);
+
   }
 
 
